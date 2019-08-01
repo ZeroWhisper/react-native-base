@@ -4,20 +4,32 @@ import {
   createDrawerNavigator
 } from "react-navigation";
 
-import Dashboard from "~/pages/Dashboard";
-import Welcome from "~/pages/Welcome";
+// import Dashboard from "~/pages/Dashboard";
+// import Welcome from "~/pages/Welcome";
+import Login from "~/pages/Login";
 
 const Routes = createAppContainer(
+  // createDrawerNavigator(
+  //   {
+  //     "Bem-Vindo!": {
+  //       screen: Welcome
+  //     },
+  //     Dashboard: {
+  //       screen: Dashboard
+  //     },
+  //     Login: {
+  //       screen: Login
+  //     }
+  //   },
+  //   { initialRouteName: "Login" }
+  // )
   createDrawerNavigator(
     {
-      "Bem-Vindo!": {
-        screen: Welcome
-      },
-      Dashboard: {
-        screen: Dashboard
+      Login: {
+        screen: Login
       }
     },
-    { initialRouteName: "Bem-Vindo!" }
+    { initialRouteName: "Login" }
   )
 );
 
