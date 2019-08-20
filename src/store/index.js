@@ -9,20 +9,21 @@ import sagas from "./sagas";
 let enhancer = null;
 let sagaMonitor = null;
 
-if (reactotron) {
+const propsComposer = [];
+
+if (__DEV__) {
   enhancer = reactotron.createEnhancer();
   sagaMonitor = reactotron.createSagaMonitor();
+  propsComposer.push(enhancer);
 }
 
-const sagaMiddleware = createSagaMiddleware(reactotron ? { sagaMonitor } : {});
+const sagaMiddleware = createSagaMiddleware(__DEV__ ? { sagaMonitor } : {});
 // const sagaMiddleware = createSagaMiddleware({});
 
 const middlewares = [];
 middlewares.push(sagaMiddleware);
 
-const propsComposer = [];
 propsComposer.push(applyMiddleware(...middlewares));
-propsComposer.push(enhancer);
 
 const composer = compose(...propsComposer);
 
